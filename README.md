@@ -1,36 +1,104 @@
-# Rsbuild project
 
-## Setup
+## 📁 Struktura
 
-Install the dependencies:
-
-```bash
-pnpm install
+```
+src/
+├── components/          # Reusable UI components
+│   ├── Button.tsx       # Base button component
+│   ├── ProductCard.tsx  # Product display component
+│   ├── Pagination.tsx   # Navigation component
+│   └── ...
+├── hooks/               # Custom React hooks
+│   ├── useFetcher.ts    # Data fetching logic
+│   ├── usePagination.ts # Pagination state management
+│   └── useDebounce.ts   # Input debouncing
+├── services/            # API layer
+├── utils/               # Helper functions
+├── constants/           # App constants
+├── static/              # Static assets
+└── types.ts             # TypeScript definitions
 ```
 
-## Get started
+## ⚠️ WAŻNE:
 
-Start the dev server, and the app will be available at [http://localhost:3000](http://localhost:3000).
+- Skupiłem się na kluczowych konceptach React/TypeScript, więc niektóre aspekty, jak responsywność mobilna, zostały pominięte.
+- Projekt nie zawiera zewnętrznych bibliotek do zarządzania stanem, aby skupić się na czystych hookach i prezentacji moich umiejętności.
+- W niektórych miejscach użyłem komentarze, ale tylko dlatego, aby wyjaśnić moje podejście lub przedstwić jak mogłoby coś wyglądać w prawdziwym projekcie. W normalnych warunkach komentarze nie byłyby potrzebne w podanych przykładach.
 
-```bash
-pnpm dev
+## 🔧 Optymalizacje
+
+- **Debounce zapytań** - Redukcja niepotrzebnych zapytań
+- **Szkielety** - Lepsze UX podczas ładowania
+- **Leniwe ładowanie** - Optymalizacja obrazów
+- **Obsługa błędów** - Podstawowa obsługa błędów
+- **Pobranie Czcionek lokalnie**
+
+## 🚀 Kluczowe Funkcjonalności
+
+- **Dostępność (WCAG 2.1)** - Wsparcie dla czytników ekranu, nawigacja klawiaturą
+- **Wyszukiwanie z debounce** - Płynne wyszukiwanie bez spamu zapytań
+- **TypeScript** - Pełne bezpieczeństwo typów
+- **Custom hooks** - Separacja logiki biznesowej od UI
+- **Obsługa błędów** - Graceful error handling z możliwością 
+
+### Dodatkowo:
+
+- **Paginacja** - Prosta aczkolwiek działająca paginacja
+- **Sticky header** - Utrzymanie nagłówka widocznego podczas przewijania (lepszy UX)
+
+## 🛠 Stack Technologiczny
+
+- **React 19** + **TypeScript**
+- **Rspack** - Szybsza alternatywa dla Vite
+- **TailwindCSS** + **Lucide React**
+- **ESLint** - Konfiguracja z stricte TypeScript
+- **Prettier** - Formatowanie kodu
+
+## 🎯 Kilka Kluczowych Wzorców użytych
+
+### 1. Custom Hooks dla logiki biznesowej
+
+```typescript
+const { data, status, error } = useFetcher<RootProducts>({
+  queryFn: fetchProducts,
+  enable: true,
+  deps: [query, pagination.skip],
+  omitDebounceWhen: (deps) => deps[0] === "",
+});
 ```
 
-Build the app for production:
+### 2. TypeScript First (DX experience)
 
-```bash
-pnpm build
+```typescript
+interface ProductsSectionProps {
+  products?: Product[];
+  heading: ComponentProps<typeof Heading>;
+  status: FetcherStatus;
+}
 ```
 
-Preview the production build locally:
+### 3. Accessibility First ( Wsparcie dla osób z ograniczeniami)
 
-```bash
-pnpm preview
+```tsx
+<div role="status" aria-live="polite" className="contents">
+  <ProductsLoader />
+  <span className="sr-only">Ładowanie produktów</span>
+</div>
 ```
 
-## Learn more
+### 4. Zarządzanie Stanem bez Zewnętrznych Bibliotek
 
-To learn more about Rsbuild, check out the following resources:
+```typescript
+export const usePagination = ({ limit, initialSkip } = {}) => {
+  const [skip, setSkip] = useState(initialSkip);
+  const [total, setTotal] = useState<number | null>(null);
+  // ... logika paginacji
+  return { skip, page, onNext, onPrev, hasNext, hasPrev };
+};
+```
 
-- [Rsbuild documentation](https://rsbuild.rs) - explore Rsbuild features and APIs.
-- [Rsbuild GitHub repository](https://github.com/web-infra-dev/rsbuild) - your feedback and contributions are welcome!
+- **DRY** 
+- **Zasady SOLID**
+- **Praktyki Clean Code**
+- **Kompozycja komponentów**
+- ...
