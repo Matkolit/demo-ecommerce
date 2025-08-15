@@ -1,4 +1,3 @@
-
 ## 📁 Struktura
 
 ```
@@ -25,6 +24,26 @@ src/
 - Projekt nie zawiera zewnętrznych bibliotek do zarządzania stanem, aby skupić się na czystych hookach i prezentacji moich umiejętności.
 - W niektórych miejscach użyłem komentarze, ale tylko dlatego, aby wyjaśnić moje podejście lub przedstwić jak mogłoby coś wyglądać w prawdziwym projekcie. W normalnych warunkach komentarze nie byłyby potrzebne w podanych przykładach.
 
+## ✨ Instalacja i uruchomienie
+
+```bash
+# Klonowanie repozytorium
+git clone https://github.com/Matkolit/demo-ecommerce.git
+cd react-shop
+
+# Instalacja zależności
+pnpm install
+
+# Uruchomienie w trybie development
+pnpm dev
+
+# Build produkcyjny
+pnpm build
+
+# Preview buildu produkcyjnego
+pnpm preview
+```
+
 ## 🔧 Optymalizacje
 
 - **Debounce zapytań** - Redukcja niepotrzebnych zapytań
@@ -39,7 +58,7 @@ src/
 - **Wyszukiwanie z debounce** - Płynne wyszukiwanie bez spamu zapytań
 - **TypeScript** - Pełne bezpieczeństwo typów
 - **Custom hooks** - Separacja logiki biznesowej od UI
-- **Obsługa błędów** - Graceful error handling z możliwością 
+- **Obsługa błędów** - Graceful error handling z możliwością
 
 ### Dodatkowo:
 
@@ -97,7 +116,7 @@ export const usePagination = ({ limit, initialSkip } = {}) => {
 };
 ```
 
-- **DRY** 
+- **DRY**
 - **Zasady SOLID**
 - **Praktyki Clean Code**
 - **Kompozycja komponentów**
