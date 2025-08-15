@@ -2,15 +2,41 @@
 
 @font-face {
   font-family: PlusJakarta;
-  font-style: normal;
-  font-weight: 400;
+  font-style: medium;
+  font-weight: 500;
   font-display: swap;
   src: url("./static/fonts/PlusJakartaSans-Medium.ttf") format("truetype");
 }
+@font-face {
+  font-family: PlusJakarta;
+  font-style: light;
+  font-weight: 300;
+  font-display: swap;
+  src: url("./static/fonts/PlusJakartaSans-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: PlusJakarta;
+  font-style: bold;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./static/fonts/PlusJakartaSans-Bold.ttf") format("truetype");
+}
+
+@theme {
+  --color-secondary: #964f52;
+  --color-secondary-light: #f2e8e8;
+  --color-burgund: #1c0d0f;
+  --color-primary: #ffff;
+  --color-light-gray: #e5e8eb;
+  --text-4xl: 1.375rem;
+  --test-4xl--line-height: 1.75rem;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
 
 body {
-  margin: 0;
-  color: #fff;
   font-family: PlusJakarta, sans-serif;
-  background-image: linear-gradient(to bottom, #020917, #101725);
+  background-color: var(--color-primary);
 }
