@@ -31,6 +31,9 @@ src/
 git clone https://github.com/Matkolit/demo-ecommerce.git
 cd react-shop
 
+# Dodanie pliku .env (w tym przypadku przekleić wartość z .env.local do .env ) 
+cp .env.local .env
+
 # Instalacja zależności
 pnpm install
 
